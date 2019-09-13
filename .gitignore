@@ -1,0 +1,11 @@
+
+// credentials
+
+credentials.tfvars
+.ssh
+authentication-token.txt
+jhipster-online-test-75a30c31d56d.json
+
+.terraform
+tfplan
+*.tfstate*
