@@ -1,8 +1,8 @@
 // Remote state
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "jhipster"
+    hostname     = "app.terraform.io"
+    organization = "JHipster"
     workspaces {
       name = "jhipster-online"
     }
@@ -11,8 +11,9 @@ terraform {
 
 // Google provider
 provider "google" {
-  project = "jhipster-online-test"
-  region  = "us-west1"
+  credentials = "${file("/Users/clementdessoude/Documents/Dev/ippon/terraform/jhipster-online-test-75a30c31d56d.json")}"
+  project     = "jhipster-online-test"
+  region      = "us-west1"
 }
 
 // Google Compute Engine
@@ -59,7 +60,7 @@ resource "google_compute_instance" "default" {
 
   metadata = {
     gce-container-declaration = module.gce-container.metadata_value
-    ssh-keys = "cdessoude:${file(var.ssh_key_path)}"
+    ssh-keys                  = "cdessoude:${file(".ssh/id_rsa.pub")}"
   }
 
   network_interface {
@@ -120,10 +121,10 @@ resource "google_compute_firewall" "default" {
     ports    = ["80", "8080", "443"]
   }
 
-  allow {
-    protocol = "ssh"
-    ports    = ["22"]
-  }
+  # allow {
+  #   protocol = "ssh"
+  #   ports    = ["22"]
+  # }
 }
 
 resource "google_compute_network" "default" {

@@ -10,6 +10,10 @@ variable "database_password" {
   default     = "admin"
 }
 
-variable "ssh_key_path" {
-  description = "Path where a ssh key is stored"
-}
+# variable "ssh_key" {
+#   description = "SSH key"
+# }
+
+# variable "gcp_credentials" {
+#   description = "GCP credentials file content"
+# }
